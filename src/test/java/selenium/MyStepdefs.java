@@ -28,13 +28,14 @@ public class MyStepdefs {
     }
 
     @Then("the manager verifies {string} is in the list")
-    public void theManagerVerifiesIsInTheList(String arg0) {
-    assertNames(arg0);
+    public void theManagerVerifiesIsInTheList(String expectedName) {
+        assertNamesHelper(expectedName);
     }
 
 
     @And("the manager verifies {string} works at {string}")
-    public void theManagerVerifiesWorksAt(String arg0, String arg1) {
+    public void theManagerVerifiesWorksAt(String employee, String expectedOffice) {
+        verifyOfficeHelper(employee, expectedOffice);
     }
 
 

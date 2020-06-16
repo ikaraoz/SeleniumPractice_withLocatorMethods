@@ -6,7 +6,7 @@ Feature: Verifying information on a web table
     Then the manager verifies "Jena Gaines" is in the list
     And the manager verifies "Jena Gaines" works at "London"
 
-#
+
 #  Scenario: The manager can get the average salary
 #    Given the manager is at "https://www.seleniumeasy.com/test/table-data-download-demo.html"
 #    When the manager gets the average salary
