@@ -13,7 +13,7 @@ import static selenium.LocatorMethods.*;
 
 public class SeleniumHelper {
     public static List<WebElement> allNamesInOneColumn = new LinkedList<>();
-    // public static List<String> allNamesInOneColumn = new LinkedList<>();
+    public static List<String> allNamesInOneColumnString = new LinkedList<>();
 
     public static void navigateHelper(String url) {
         driver.navigate().to(url);
@@ -21,6 +21,9 @@ public class SeleniumHelper {
 
     public static void listHelper(String name) {
         allNamesInOneColumn = driver.findElements(By.xpath("//table[@id='example']/tbody/tr//td[1]"));
+        for (WebElement e : allNamesInOneColumn) {
+            allNamesInOneColumnString.add(e.getText());
+        }
         //List<WebElement> allRaws = driver.findElements(By.xpath("//table[@id='example']/tbody/tr"));
         //      int numberOfRaws = allNamesInOneColumn.size();
 //        for (int i = 1; i <= numberOfRaws; i++) {
@@ -29,7 +32,7 @@ public class SeleniumHelper {
 //            allNamesInOneColumn.add(names);
 //        }
 //        for (WebElement names : allNamesInOneColumn) {
-//            System.out.println(names.getText());
+//            System.out.println(names.getText().equals("me"));
 //        }
         // System.out.println("numberOfRaws = " + numberOfRaws);
 
@@ -43,17 +46,8 @@ public class SeleniumHelper {
     }
 
     public static void assertNamesHelper(String name) {
-        for (WebElement names : allNamesInOneColumn) {
-            if (names.getText().equals(name)) {
-                Assert.assertEquals(names.getText(), name);
-                System.out.println("found it");
-                break;
-            } else {
-                System.out.println("no match");
-            }
-        }
-//        Assert.assertTrue(allNamesInOneColumn.contains(name));
-//        System.out.println(allNamesInOneColumn.toString());
+        Assert.assertTrue(allNamesInOneColumnString.contains(name));
+
     }
 
     public static void verifyOfficeHelper(String employee, String expectedOffice) {
